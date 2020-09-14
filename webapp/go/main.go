@@ -686,6 +686,7 @@ func postEstate(c echo.Context) error {
 			c.Logger().Errorf("failed to read record: %v", err)
 			return c.NoContent(http.StatusBadRequest)
 		}
+		// NOTE: 良い子は真似しちゃいけません
 		queryInsert += fmt.Sprintf(`(%d,"%s","%s","%s","%s",%f,%f,%d,%d,%d,"%s",%d)`, id, name, description, thumbnail, address, latitude, longitude, rent, doorHeight, doorWidth, features, popularity)
 		if rowlen-1 != i {
 			queryInsert += ","
